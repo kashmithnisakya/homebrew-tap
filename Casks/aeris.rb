@@ -13,8 +13,9 @@ cask "aeris" do
   app "Aeris.app"
 
   # Aeris isn't notarized; clear quarantine so it opens without the Gatekeeper prompt.
-  postflight_steps do
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "Aeris.app"], base: :appdir
+  postflight_steps base: :appdir do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "Aeris.app"],
+                          chdir: ".", writable_paths: ["Aeris.app"]
   end
 
   uninstall quit: "com.kashmithnisakya.aeris"
