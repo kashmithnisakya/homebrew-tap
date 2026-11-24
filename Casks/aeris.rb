@@ -25,4 +25,10 @@ cask "aeris" do
   uninstall quit: "com.kashmithnisakya.aeris"
 
   zap trash: "~/Library/Preferences/com.kashmithnisakya.aeris.plist"
+
+  caveats <<~EOS
+    Aeris signs in through the official SmartThings CLI. Install it once:
+      brew install smartthingscommunity/smartthings/smartthings
+    Then click the Aeris icon in the menu bar and choose "Sign in with SmartThings".
+  EOS
 end
