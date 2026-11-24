@@ -9,5 +9,8 @@ brew install --cask kashmithnisakya/tap/aeris
 Upgrade to the newest release:
 
 ```bash
-brew upgrade --cask --greedy aeris
+brew upgrade aeris
 ```
+
+The cask is bumped automatically within about an hour of each Aeris release
+(see `.github/workflows/bump-aeris.yml`).

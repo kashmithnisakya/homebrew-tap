@@ -1,0 +1,33 @@
+name: Bump Aeris
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # hourly
+  workflow_dispatch:
+  repository_dispatch:
+    types: [aeris-release]
+
+permissions:
+  contents: write
+
+concurrency: bump-aeris
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update cask to latest release
+        id: bump
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: .github/scripts/bump-aeris.sh
+
+      - name: Commit
+        if: steps.bump.outputs.version != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "aeris ${{ steps.bump.outputs.version }}"
+          git push

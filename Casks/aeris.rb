@@ -1,12 +1,16 @@
 cask "aeris" do
-  version :latest
-  sha256 :no_check
+  version "1.1.0"
+  sha256 "0957bc994dbc96b5d7aa0fe8093b9af4dd93e035338d42b369ded777f3304d98"
 
-  # Release asset (not a source zipball); the fixed name lets this cask always track the latest release.
-  url "https://github.com/kashmithnisakya/aeris/releases/latest/download/Aeris.zip"
+  url "https://github.com/kashmithnisakya/aeris/releases/download/v#{version}/Aeris-#{version}.zip"
   name "Aeris"
   desc "Control a SmartThings air conditioner from the menu bar"
   homepage "https://github.com/kashmithnisakya/aeris"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   depends_on macos: :ventura
 
