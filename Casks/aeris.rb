@@ -1,6 +1,6 @@
 cask "aeris" do
-  version "1.3.1"
-  sha256 "8bfd3f9d351412c8c802d5d9eb03c3b92980857c63b547511d84ee439269cf6a"
+  version "1.4.0"
+  sha256 "3307320a47198aba8ebd7b6cdca6b70472f5617c21472c3ab0ba0fc36ebf101e"
 
   url "https://github.com/kashmithnisakya/aeris/releases/download/v#{version}/Aeris-#{version}.zip"
   name "Aeris"
